@@ -22,6 +22,9 @@ export class UserDatasService {
   setLogStatus(status: boolean):void {
     this.isLoggedIn = status
   }
+  getUserStatus() {
+    return this.isLoggedIn
+  }
   getLogStatus(): boolean {
     return this.isLoggedIn;
   }

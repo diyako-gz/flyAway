@@ -26,13 +26,17 @@ export class HomePageComponent implements OnInit {
   
   ngOnInit(): void {
     this.bookDatas = this.booksData.getBooksData()
+    // if(this.logInData.getLogStatus()) {
+    //   const username = localStorage.getItem('username')
+    //   const role = this.localStorage.getItem('role')
+    //   this.roleHandler = role
+    //   this.headerName = username
+    // } else {
+    //   this.headerName = 'log in'
+    // }
     if(this.logInData.getLogStatus()) {
-      const username = localStorage.getItem('username')
-      const role = this.localStorage.getItem('role')
-      this.roleHandler = role
-      this.headerName = username
-    } else {
-      this.headerName = 'log in'
+      const data = this.localStorage.getItem('username')
+      this.headerName = data
     }
   }
 
@@ -42,6 +46,6 @@ export class HomePageComponent implements OnInit {
     this._route.navigate(['log-in'])
   }
 
-
+  
 
 }
