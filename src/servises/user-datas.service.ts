@@ -19,7 +19,7 @@ export class UserDatasService {
   getUserData() {
     return this.usersData
   }
-  setLogStatus(status: boolean):void {
+  setLogStatus(status: boolean): void {
     this.isLoggedIn = status
   }
   getUserStatus() {

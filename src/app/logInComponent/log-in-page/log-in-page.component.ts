@@ -28,8 +28,9 @@ export class LogInPageComponent {
         this.userData.setLogStatus(true)
         localStorage.setItem('username' , this.nameInput)
         localStorage.setItem('password' , this.passWordInput)
+        localStorage.setItem('user-status' , 'true')
         localStorage.setItem('role' , foundUser.role)
-        this._route.navigate(['/'])
+        this._route.navigate(['home'])
       } else {
         alert('password or name is not correct');
         console.log(this.LogStatus);

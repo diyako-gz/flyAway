@@ -5,7 +5,9 @@ import { LogInPageComponent } from './logInComponent/log-in-page/log-in-page.com
 import { LogInGuardGuard } from '../guards/log-in-guard.guard';
 
 export const routes: Routes = [
-    {path: '' , component: HomePageComponent} ,
+    {path: '' , redirectTo: 'log-in', pathMatch: 'full' } ,
+    {path: 'home' , component : HomePageComponent , canActivate : [LogInGuardGuard] } ,
     {path: 'prodacts' , component: ProdactsPageComponent , canActivate: [LogInGuardGuard]} , 
     {path : 'log-in' , component: LogInPageComponent}
 ];
+

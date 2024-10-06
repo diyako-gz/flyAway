@@ -37,12 +37,16 @@ export class HomePageComponent implements OnInit {
     if(this.logInData.getLogStatus()) {
       const data = this.localStorage.getItem('username')
       this.headerName = data
+      const roler = localStorage.getItem('role')
+      this.roleHandler = roler ? roler : ''
     }
   }
 
   logOutHandler() {
     localStorage.removeItem('username')
     localStorage.removeItem('password')
+    localStorage.removeItem('role')
+    localStorage.removeItem('user-status')
     this._route.navigate(['log-in'])
   }
 
