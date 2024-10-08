@@ -8,7 +8,7 @@ export class LogInGuardGuard implements CanActivate {
   constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (localStorage.getItem('username')) {
+    if (localStorage.getItem('user-status')) {
       console.log('222');
       return true;
     } else {

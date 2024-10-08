@@ -3,6 +3,8 @@ import { RouterLinkActive } from '@angular/router';
 import { UserDatasService } from '../../../servises/user-datas.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from '../../../servises/api.service';
+
 
 
 @Component({
@@ -13,28 +15,13 @@ import { Router } from '@angular/router';
   styleUrl: './log-in-page.component.css',
 })
 export class LogInPageComponent {
-  constructor(private userData: UserDatasService, private _route: Router) {}
-  nameInput: string = '';
-  passWordInput: string = '';
-  LogStatus: boolean = false;
-
-  submitCheacker(name: string, pass: string) {
-    const getData = this.userData.getUserData();
-    if (getData) {
-      const foundUser = getData.find(
-        (user) => user.name === name && user.password === pass 
-      );
-      if (foundUser) {
-        this.userData.setLogStatus(true)
-        localStorage.setItem('username' , this.nameInput)
-        localStorage.setItem('password' , this.passWordInput)
-        localStorage.setItem('user-status' , 'true')
-        localStorage.setItem('role' , foundUser.role)
-        this._route.navigate(['home'])
-      } else {
-        alert('password or name is not correct');
-        console.log(this.LogStatus);
-      }
-    }
+  constructor(private api:ApiService , private _route: Router) {}
+  userEmail: string = ''
+  password: string = ''
+  
+  submitLogIn(email: string , pass: string) {
+    /////
   }
+  
+ 
 }
