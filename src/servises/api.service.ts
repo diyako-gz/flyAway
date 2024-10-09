@@ -18,6 +18,7 @@ export class ApiService {
   getUser() {
    return this.http.get('https://fakestoreapi.com/users') 
   }
-
-
+  getDatas (id: string): any {
+    return this.http.get(`https://fakestoreapi.com/products/${id}`)
+  }
 }

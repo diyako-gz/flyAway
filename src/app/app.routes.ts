@@ -4,12 +4,14 @@ import { ProdactsPageComponent } from './ProdactsComponent/prodacts-page/prodact
 import { LogInPageComponent } from './logInComponent/log-in-page/log-in-page.component';
 import { LogInGuardGuard } from '../guards/log-in-guard.guard';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { ProdactPageComponent } from './prodact-page/prodact-page.component';
 
 export const routes: Routes = [
     {path: '' , redirectTo: 'home', pathMatch: 'full' } ,
     {path: 'home' , component : HomePageComponent  } ,
     {path: 'prodacts' , component: ProdactsPageComponent } , 
     {path : 'log-in' , component: LogInPageComponent} ,
-    {path: 'sign-in' , component: SignInComponent}
+    {path: 'sign-in' , component: SignInComponent} ,
+    {path: 'prodact/:id' , component : ProdactPageComponent}
 ];
 
