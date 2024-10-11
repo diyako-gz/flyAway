@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { BooksDataService } from '../../../servises/books-data.service';
 import { BooksDataPipe } from '../../../pipes/books-data.pipe';
 import { FormsModule } from '@angular/forms';
+import { ApiService } from '../../../servises/api.service';
 
 
 @Component({
@@ -22,24 +23,14 @@ export class HomePageComponent implements OnInit {
   bookDatas: any
   searchText: string = ''
   roleHandler: string = ''
-  constructor(private logInData: UserDatasService , private _route: Router , private booksData: BooksDataService ) {}
+  constructor(private logInData: UserDatasService , private _route: Router , private booksData: BooksDataService , private api: ApiService ) {}
   
   ngOnInit(): void {
     this.bookDatas = this.booksData.getBooksData()
-    // if(this.logInData.getLogStatus()) {
-    //   const username = localStorage.getItem('username')
-    //   const role = this.localStorage.getItem('role')
-    //   this.roleHandler = role
-    //   this.headerName = username
-    // } else {
-    //   this.headerName = 'log in'
-    // }
-    if(this.logInData.getLogStatus()) {
-      const data = this.localStorage.getItem('username')
-      this.headerName = data
-      const roler = localStorage.getItem('role')
-      this.roleHandler = roler ? roler : ''
+    if(localStorage.getItem('username')) {
+      this.headerName = localStorage.getItem('username')
     }
+    
   }
 
   logOutHandler() {

@@ -8,6 +8,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
+  userStatus : boolean = false
+
   getData() {
     return this.http.get('https://fakestoreapi.com/products')
   }
@@ -21,4 +23,9 @@ export class ApiService {
   getDatas (id: string): any {
     return this.http.get(`https://fakestoreapi.com/products/${id}`)
   }
+  setUserStatus(data: boolean) {
+    return this.userStatus = data
+  }
+
+
 }
