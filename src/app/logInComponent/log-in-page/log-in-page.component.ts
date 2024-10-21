@@ -1,31 +1,40 @@
 import { Component } from '@angular/core';
 import { RouterLinkActive } from '@angular/router';
-import { UserDatasService } from '../../../servises/user-datas.service';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../servises/api.service';
 import { HttpParams } from '@angular/common/http';
+import { FormBuilder , FormGroup , Validator } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-log-in-page',
   standalone: true,
-  imports: [RouterLinkActive, FormsModule],
+  imports: [RouterLinkActive, FormsModule , ReactiveFormsModule],
   templateUrl: './log-in-page.component.html',
   styleUrl: './log-in-page.component.css',
 })
 export class LogInPageComponent {
-  constructor(private api:ApiService , private _route: Router) {}
+  logInForm: FormGroup
+  constructor(private api:ApiService , private _route: Router , private formbuildar: FormBuilder) {
+    this.logInForm = this.formbuildar.group({
+      email: ['' , Validators.required] ,
+      password: ['' , Validators.required] 
+    })
+  }
   userEmail: string = ''
   password: string = ''
   apiData : any = {}
   status: boolean = false
   
-  submitLogIn(email: string, pass: string) {
+  submitLogIn() {
+   const email = this.logInForm.get('email')?.value; // Get email from the form
+   const password = this.logInForm.get('password')?.value;
    this.api.getUser().subscribe((response) => {
     this.apiData = response
-    this.checker(email , pass)
+    this.checker(email , password)
    })
 }
 checker(email: string, pass: string) {
